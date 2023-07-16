@@ -43,15 +43,16 @@ axios.get('https://github.com/bsovs/Fall2023-Internships')
     const data = { jobs };
 
     // Write the data to a JSON file
-    fs.writeFileSync('jobs.json', JSON.stringify(data));
+    // fs.writeFileSync('jobs.json', JSON.stringify(data));
 
     // Set up an API endpoint to serve the JSON data
     app.get('/getJobs', (req, res) => {
+      console.log("API is Called");
       res.json(data);
     });
 
     // Start the server
-    const port = 3000;
+    const port = 3000 || process.env.PORT;
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
