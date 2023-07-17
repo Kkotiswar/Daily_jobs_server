@@ -6,10 +6,11 @@ const cors = require('cors');
 
 const app = express();
 // app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+const corsOptions = {
+  origin: ['http://daily-jobs.onrender.com/', 'https://daily-jobs.onrender.com/']
+};
+app.use(cors(corsOptions));
+
 
 // Fetch the HTML content of the web page
 axios.get('https://github.com/bsovs/Fall2023-Internships')
