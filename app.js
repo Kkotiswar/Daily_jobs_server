@@ -5,7 +5,11 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // Fetch the HTML content of the web page
 axios.get('https://github.com/bsovs/Fall2023-Internships')
